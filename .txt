@@ -1,0 +1,12 @@
+        {
+          "name":"50 virtual users every second for 1 minutes, max 50 users",
+          "duration": 60,
+          "arrivalRate": 5,
+          "maxVusers": 50
+        },
+        {
+          "name":"scale to 500 user in 1 minutes",
+          "duration": 60,
+          "arrivalRate": 10,
+          "rampTo": 500
+        }

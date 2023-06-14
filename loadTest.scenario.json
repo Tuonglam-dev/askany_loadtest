@@ -1,0 +1,131 @@
+{
+    "config": {
+      "target": "https://socket.askany.com.vn/",
+      "phases": [
+        {
+          "name":"50 virtual users every second for 5 minutes",
+          "duration": 60 ,
+          "arrivalRate": 50
+        },
+        {
+          "name":"50 virtual users every second for 1 minutes, max 50 users",
+          "duration": 60,
+          "arrivalRate": 5,
+          "maxVusers": 50
+        },
+        {
+          "name":"scale to 500 user in 1 minutes",
+          "duration": 60,
+          "arrivalRate": 10,
+          "rampTo": 500
+        }
+      ],
+      "socketio":{
+        "extraHeaders": {
+          "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoSUQiOiI2NDg4MGMwOWI5NTcwZDJhYWUwNmZmMTQiLCJ1c2VySUQiOiI2NDg4MGMwOWI5NTcwZDJhYWUwNmZmMTIiLCJleHBlcnRJRCI6bnVsbCwiYWRtaW5JRCI6bnVsbCwiaWF0IjoxNjg2NjQ4ODIyLCJleHAiOjE2ODcyNTM2MjJ9.sm4Orlsvt6-f_K43wkARdjVDNmPtv1-ayZL5EMK5YnU",
+          "secret":"appfake@waodate.com"
+        }
+      },
+      "engines": {
+        "socketio-v3": {}
+      }
+    },
+    "scenarios": [
+      {
+        "name": "50 virtual users every second for 1 minutes, max 50 users",
+        "engine": "socketio-v3",
+        "flow": [
+          {
+            "emit": {
+              "namespace": "/message", 
+              "channel": "SEND_MESSAGE_CSS",
+              "data": {
+                "conversation": "64880c12a00f8546697f5ffe",
+                "data": "abcd",
+                "userSender": "64880c09b9570d2aae06ff12"
+              },
+              "weight":1,
+              "afterResponse": "printStatus"
+            }
+          },
+          {
+            "emit": {
+              "namespace": "/message", 
+              "channel": "SEND_MESSAGE_SSC",
+              "data": {
+                "conversation": "64880c12a00f8546697f5ffe",
+                "data": "abcd",
+                "userSender": "64880c09b9570d2aae06ff12"
+              },
+              "weight":1,
+              "afterResponse": "printStatus"
+            }
+          }
+        ]
+      },
+      {
+        "name": "50 virtual users every second for 5 minutes",
+        "engine": "socketio-v3",
+        "flow": [
+          {
+            "emit": {
+              "namespace": "/message", 
+              "channel": "SEND_MESSAGE_CSS",
+              "data": {
+                "conversation": "64880c12a00f8546697f5ffe",
+                "data": "abcd",
+                "userSender": "64880c09b9570d2aae06ff12"
+              },
+              "weight":1,
+              "afterResponse": "printStatus"
+            }
+          },
+          {
+            "emit": {
+              "namespace": "/message", 
+              "channel": "SEND_MESSAGE_SSC",
+              "data": {
+                "conversation": "64880c12a00f8546697f5ffe",
+                "data": "abcd",
+                "userSender": "64880c09b9570d2aae06ff12"
+              },
+              "weight":1,
+              "afterResponse": "printStatus"
+            }
+          }
+        ]
+      },
+      {
+        "name": "scale to 500 user in 1 minutes",
+        "engine": "socketio-v3",
+        "flow": [
+          {
+            "emit": {
+              "namespace": "/message", 
+              "channel": "SEND_MESSAGE_CSS",
+              "data": {
+                "conversation": "64880c12a00f8546697f5ffe",
+                "data": "abcd",
+                "userSender": "64880c09b9570d2aae06ff12"
+              },
+              "weight":1,
+              "afterResponse": "printStatus"
+            }
+          },
+          {
+            "emit": {
+              "namespace": "/message", 
+              "channel": "SEND_MESSAGE_SSC",
+              "data": {
+                "conversation": "64880c12a00f8546697f5ffe",
+                "data": "abcd",
+                "userSender": "64880c09b9570d2aae06ff12"
+              },
+              "weight":1,
+              "afterResponse": "printStatus"
+            }
+          }
+        ]
+      }
+    ]
+  }
